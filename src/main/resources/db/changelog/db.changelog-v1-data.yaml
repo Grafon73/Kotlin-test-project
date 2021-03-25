@@ -1,0 +1,16 @@
+databaseChangeLog:
+- changeSet:
+    id: 2
+    author: rafael.lutfullin
+    context: local
+    changes:
+        - loadData:
+              encoding: UTF-8
+              file: db/changelog/rabbit_data.csv
+              separator: ','
+              tableName: rabbit
+        - loadData:
+              encoding: UTF-8
+              file: db/changelog/pasture_data.csv
+              separator: ','
+              tableName: pasture

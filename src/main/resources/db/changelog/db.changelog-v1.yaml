@@ -1,0 +1,70 @@
+databaseChangeLog:
+  - changeSet:
+      id: 1
+      author: rafael.lutfullin
+      changes:
+        - createTable:
+            columns:
+              - column:
+                  autoIncrement: true
+                  constraints:
+                    primaryKey: true
+                    primaryKeyName: rabbit_pkey
+                  name: id
+                  type: BIGINT
+              - column:
+                  name: age
+                  type: integer
+              - column:
+                  name: color
+                  type: VARCHAR(255)
+              - column:
+                  name: name
+                  type: VARCHAR(255)
+              - column:
+                  name: photo
+                  type: bytea
+              - column:
+                  name: version
+                  type: integer
+            tableName: rabbit
+        - createTable:
+            columns:
+              - column:
+                  autoIncrement: true
+                  constraints:
+                    primaryKey: true
+                    primaryKeyName: pasture_pkey
+                  name: id
+                  type: BIGINT
+              - column:
+                  name: distance
+                  type: integer
+              - column:
+                  name: end_date
+                  type: timestamp with time zone
+              - column:
+                  name: start_date
+                  type: timestamp with time zone
+              - column:
+                  name: energy_consumption
+                  type: double precision
+              - column:
+                  name: quality_of_pasture
+                  type: boolean
+              - column:
+                  name: rabbit_id
+                  type: integer
+              - column:
+                  name: version
+                  type: integer
+            tableName: pasture
+        -  addForeignKeyConstraint:
+             baseColumnNames: rabbit_id
+             baseTableName: pasture
+             baseTableSchemaName: public
+             constraintName: fk_rabbit_pasture
+             referencedColumnNames: id
+             referencedTableName: rabbit
+             referencedTableSchemaName: public
+
